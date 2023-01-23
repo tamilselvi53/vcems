@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "mpg.css" >
+    <title>MPG</title>
+</head>
+<body>
+    <div class = "header">
+        <div class="menu">
+
+            <div class="leftmenu">
+                <h4>VCEMS</h4>
+            </div>
+
+            <div class="rightmenu">
+                <ul>
+                    <li id="firstlist">Home</li>
+                    <li>Faq</li>
+                    <li>About Us</li>
+                    <li>Blog</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+    </div>
+    <div class = "background">
+    <div class = "body">
+    <h1>Vehicle's MPG</h1>
+    <h2>Enter details:</h2>
+    <div class = "mpg">
+    <form id="mpgform">
+      <label for="miles_driven">Enter Miles Driven: </label>
+      <input type="text" id="miles_driven" name="miles_driven" />
+      <span class="error" id="miles_driven_error"> </span>
+
+      <label for="gallons_used">Enter Petrol Consumption: </label>
+      <input type="text" id="gallons_used" name="gallons_used" />
+      <span class="error" id="gallons_used_error"> </span>
+
+      <center>
+      <input
+        type="button"
+        id="btnCalc"
+        value="Calculate the MPG"
+        class="clear"
+      />
+
+
+    </center>  
+    </form>
+    </div>
+</div>
+
+    <p id="mpg"></p>
+    </div>
+    <div class = "footer">
+        <hr>
+        <div class = "copyright">
+            <h3>Mini Project SECE &#169 2022</h3>
+        </div>
+    </div>
+
+
+<script>
+const $ = (id) => {
+        return document.getElementById(id);
+      };
+
+      let miles;
+      let milesDriven;
+      let gallons;
+      let price;
+      let mpg;
+      let cost;
+      let err;
+      let = true;
+
+      const getNum = (num) => {
+        if (isNaN(num) || num <= 0) {
+          return true;
+        }
+      };
+
+      // Clear Button Function
+      const clearBtn = () => {
+        // Miles Driven
+        $("miles_driven").value = "";
+        $("miles_driven_error").innerHTML = "";
+
+        // Gallons Used
+        $("gallons_used").value = "";
+        $("gallons_used_error").innerHTML = "";
+
+        // Assign Outputs
+        $("mpg").innerHTML = "";
+        $("cost").innerHTML = "";
+      };
+      // MPG Calculate Function
+      function calc() {
+        // Miles Driven
+        var miles = $("miles_driven").value;
+        var miles_err = $("miles_driven_error");
+        miles_err.innerHTML = "";
+        var miles_ok = true;
+
+        // Gallons Used
+        var gallons = $("gallons_used").value;
+        var gallon_err = $("gallons_used_error");
+        gallon_err.innerHTML = "";
+        var gallons_ok = true;
+
+        // Assign Outputs
+        var mpg = $("mpg");
+        var cost = $("cost");
+        var total_mpg = miles / gallons;
+
+        // Error Check
+        if (getNum(miles)) {
+          miles_err.innerHTML = "Please enter a valid number";
+          miles_ok = false;
+        }
+
+        if (getNum(gallons)) {
+          gallon_err.innerHTML = "Please enter a valid number";
+          gallons_ok = false;
+        }
+
+        // Calculate
+        if (miles_ok && gallons_ok) {
+          mpg.innerHTML =
+            "The estimated MPG is:  " + total_mpg.toFixed(0) + "mpg.";
+        }
+      }
+      // Call functions on load
+      window.onload = function () {
+        $("btnCalc").onclick = calc;
+        $("btnClear").onclick = myFunction();
+      };
+      /*
+      function myFunction() {
+        window.location.href="/ghg.html";  
+      } */
+</script>
+
+
+</body>
+</html>

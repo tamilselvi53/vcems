@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GREENHOUSE GAS CALCULATOR </title>
+       
+<style>
+* {
+    margin: auto;
+    padding: auto;
+}
+
+.header {
+    height: 100px;
+    background-color: grey;
+}
+.body {
+    height: 700px;
+    background-color: bisque;
+}
+.footer {
+    height: 70px;
+    background-color: darkgrey;
+}
+.menu{
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.leftmenu{
+    width: 20%;
+    line-height: 100Px;
+    font-size: 23px;
+    float: left;
+}
+.leftmenu h4{
+    padding-left: 60px;
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    font-family: 'montserrat', sans-serif;
+}
+.rightmenu{
+    width: 60%;
+    height: 100Px;
+    float: right;
+}
+.rightmenu ul{
+    padding-right: 30px;
+}
+.rightmenu ul li{
+    display: inline-block;
+    font-family: 'montserrat', sans-serif ;
+    list-style: none;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    line-height: 100px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.rightmenu ul li:hover{
+    color: #00ccff;
+}
+#firstlist{
+   color: #00ccff; 
+}
+.bg-info {
+    background-color: bisque;
+}
+input[type=number], select {
+  width: 28%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.btn-secondary {
+    background-color: white;
+    color: rgb(50, 44, 45);
+    font-family: 'montserrat', sans-serif ;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 40px;
+    width: 350px;
+    margin-top: 25px;
+    border: 2px solid rgb(50, 44, 45);
+    cursor: pointer;
+}
+.container {
+    padding: 53px;
+    height: 425px;
+}
+</style>
+
+    <body>
+        <div class = "header">
+            <div class="menu">
+    
+                <div class="leftmenu">
+                    <h4>VCEMS</h4>
+                </div>
+    
+                <div class="rightmenu">
+                    <ul>
+                        <li id="firstlist">Home</li>
+                        <li>Faq</li>
+                        <li>About Us</li>
+                        <li>Blog</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+        </div>
+        <div class = "body">
+        <div class='container bg-info text-white rounded-lg text-center'>
+            <h1>GREENHOUSE GAS CALCULATOR </h1>
+            <h3>Enter vehicle's MPG:</h3>
+            <input id='mpg' type='number' placeholder='Insert MPG'/>
+            <h3>Enter Source to destination distance: (in miles)</h3>
+            <input id='dist' type='number' placeholder='Insert Distance'/>
+            <br/>
+            <br/>
+            <button class='btn-secondary rounded-sm' onclick='calcCO2()'>Calculate Carbon Footprint</button>
+          </div>
+          <div>
+              <h3 id='result4'></h3>
+            <br/>
+              <h3 id='result'></h3>
+            <br/>
+          </div>
+        </div>
+        <div class = "footer">
+            <hr>
+            <div class = "copyright">
+                <h3>Mini Project SECE &#169 2022</h3>
+            </div>
+        </div>
+        
+        <script>
+            var res = document.getElementById('result');
+			res.style.color='blue';
+            var res4 = document.getElementById("result4");
+			res4.style.color='blue';
+            var mpg = document.getElementById('mpg');
+            var dist = document.getElementById('dist');
+            var trip = document.getElementById('trips');
+            function calcCO2() {
+                var x = mpg.value;
+                var y = dist.value;
+                var z = 1;
+                var calc4 = (8.8/x)*1000;
+                var calc = (calc4 * y)/1000;
+                var calc2 = (calc * z);
+                var calc3 = (calc2*52);
+                
+                calc = calc.toFixed(2);
+                calc2 = calc2.toFixed(2);
+                calc3 = calc3.toFixed(2);
+                calc4 = calc4.toFixed(1);
+                console.log('calc is: ' + calc);
+                res.innerHTML = "Calculated Equivalent Carbon Footprint to GHG emission is: "+calc+"<br/>Unit: kg CO2e";
+                res4.innerHTML = "Calculated Carbon Footprint per mile is: "+calc4+"<br/>Unit: g CO2e / mile";
+            }
+        </script>
+    </body>
+</html>
